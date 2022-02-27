@@ -1,0 +1,25 @@
+.container {
+  margin: 20px 20px 20px 20px;
+}
+.row {
+  padding: 0;
+  margin-right: -50px;
+}
+.col-md-8 {
+  margin-top: 20px;
+  float: right;
+  padding-left: 60px;
+}
+nav a {
+  font-family: monospace;
+  font-size: 1.2em;
+}
+.accordion button span {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.accordion .accordion-body a {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+/*# sourceMappingURL=main.css.map */
