@@ -1,8 +1,12 @@
 @largerFont: 1.2em;
 @margin: 20px;
 
+body {
+  background: lightyellow;
+}
+
 .container {
-  margin: 20px 20px 20px 20px;
+  margin: 20px;
 }
 
 .row {
@@ -24,6 +28,7 @@ nav {
 }
 
 .accordion {
+
   button {
     span {
       font-weight: bold;
@@ -60,11 +65,54 @@ nav {
   li {
     font-size: 1.5em;
   }
+
+  a {
+    margin: 10px;
+  }
 }
+
+.p-5 {
+  background: lavender;
+}
+
 
 #accordionExample {
   position: fixed;
   width:30%;
+  .accordion-item {
+    background: lavender;
+  }
+}
+
+#personalInfo {
+  position: fixed;
+  width: 30%;
+  background: lavender;
+  text-align: center;
+
+  img {
+    padding: 5px 20px;
+  }
+
+  table {
+    table-layout: fixed;
+    text-align: left;
+
+    tr {
+      word-wrap: break-word;
+      max-width: 10px;
+    }
+
+    td {
+      border-bottom: none;
+      word-wrap: break-word;
+      max-width: 10px;
+    }
+  }
+}
+
+h1 {
+  padding: 20px;
 }
 
 //responsive
@@ -73,11 +121,16 @@ nav {
     width: 100%;
   }
 
-  .col-4 {
+  .col-md-4 {
     width: 100%;
   }
 
   #accordionExample {
+    position: relative;
+    width: 100%;
+  }
+
+  #personalInfo {
     position: relative;
     width: 100%;
   }
