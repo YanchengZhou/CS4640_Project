@@ -38,3 +38,47 @@ nav {
     }
   }
 }
+
+.upper {
+  vertical-align: top;
+
+  * {
+    display: inline;
+  }
+
+  h4 {
+    padding-left: 50px;
+  }
+}
+
+.itemInfo {
+  ul {
+    padding-top: @margin;
+    padding-bottom: @margin;
+  }
+
+  li {
+    font-size: 1.5em;
+  }
+}
+
+#accordionExample {
+  position: fixed;
+  width:30%;
+}
+
+//responsive
+@media only screen and (max-width: 768px) {
+  .col-md-8 {
+    width: 100%;
+  }
+
+  .col-4 {
+    width: 100%;
+  }
+
+  #accordionExample {
+    position: relative;
+    width: 100%;
+  }
+}

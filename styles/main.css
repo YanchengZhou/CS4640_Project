@@ -22,4 +22,36 @@ nav a {
   margin-top: 20px;
   margin-bottom: 10px;
 }
+.upper {
+  vertical-align: top;
+}
+.upper * {
+  display: inline;
+}
+.upper h4 {
+  padding-left: 50px;
+}
+.itemInfo ul {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.itemInfo li {
+  font-size: 1.5em;
+}
+#accordionExample {
+  position: fixed;
+  width: 30%;
+}
+@media only screen and (max-width: 768px) {
+  .col-md-8 {
+    width: 100%;
+  }
+  .col-4 {
+    width: 100%;
+  }
+  #accordionExample {
+    position: relative;
+    width: 100%;
+  }
+}
 /*# sourceMappingURL=main.css.map */
