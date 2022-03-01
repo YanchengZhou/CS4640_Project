@@ -8,45 +8,47 @@
          <meta name="author" content="Xiyuan Song xs9qpu">
          <meta name="description" content="basicinfo">
          <meta name="keywords" content="sprint">  
-         <link rel="stylesheet" type="text/css" href="sprint2.css"> 
+         <link rel="stylesheet" type="text/css" href="styles/info_upload.css">
 
          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
 
          <title>UVA Connect</title> 
      </head>  
      <body>
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-            <div class="container-xl">
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link active" href="#"> Home | </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"> Used Items | </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"> House Rentals | </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"> Carpooling | </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"> Account | </a>
-                        </li>
-                    </ul>
-                </div>
+     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+         <div class="container-xl">
+             <div class="collapse navbar-collapse">
+                 <ul class="navbar-nav">
+                     <li class="nav-item active">
+                         <a class="nav-link active" href="index.html"> Home | </a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="#"> Used Items | </a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="#"> House Rentals | </a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="#"> Carpooling | </a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="account.html"> Account | </a>
+                     </li>
+                 </ul>
+             </div>
 
-                <div class="collapse navbar-collapse justify-content-end">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="#"><button class="btn btn-outline-dark my-2 my-sm-0"> Log in </button></a>
-                        </li>
-                    </ul>
+             <div class="collapse navbar-collapse justify-content-end">
+                 <ul class="navbar-nav">
+                     <li class="nav-item">
+                         <a href="uploadpage.html"><button class="btn btn-primary my-2 my-sm-0"> Upload </button></a>
+                         &nbsp &nbsp &nbsp &nbsp
+                         <a href="#"><button class="btn btn-outline-dark my-2 my-sm-0"> Log in </button></a>
+                     </li>
+                 </ul>
 
-                </div>
-            </div>
-        </nav>
+             </div>
+         </div>
+     </nav>
 
 
         
@@ -73,7 +75,7 @@
                 <div class= "col-8">
                     <h4>Post information</h4>
                     
-                    <img src="item.jpg" alt="item image" style="height:40%;width:60%;">
+                    <img src="images/item.jpg" alt="item image" style="height:40%;width:60%;">
                     <div style="padding-bottom:5px; padding-top: 5px;">
                         <button type="button" class="btn btn-primary" id = "upvote">Upvote</button>
                         <button type="button" class="btn btn-primary" id = "addcollection">Add collection</button>
@@ -87,8 +89,8 @@
                     </form>
 
                     <form action="/action.php" id="private">
-                        <label for="comment0">Send comments:</label>
-                        <textarea id = "comment0" form = "private" class = "usercomment" style=" min-width:10px; max-width:100%;min-height:10px;height:30%;width:70%;" >
+                        <label for="comment1">Send comments:</label>
+                        <textarea id = "comment1" form = "private" class = "usercomment" style=" min-width:10px; max-width:100%;min-height:10px;height:30%;width:70%;" >
                         </textarea>
                         <input class="btn btn-primary" type="submit" value="Submit">
                     </form>
