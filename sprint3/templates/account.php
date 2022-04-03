@@ -57,7 +57,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div id="personalInfo">
-                    <h1>User: username</h1>
+                    <h1>User: <?=$userinfo[0]["name"];?></h1>
                     <div class="col-md-6">
                         <img class="card-img-top" src="images/uva.jpg" alt="Default head portrait">
                     </div>
@@ -69,27 +69,27 @@
                             </tr>
                             <tr>
                                 <th scope="row">Age</th>
-                                <td>22</td>
+                                <td><?=$userinfo[0]["age"];?></td>
                             </tr>
                             <tr>
                                 <th scope="row">Contact</th>
-                                <td>434-345-3456</td>
+                                <td><?=$userinfo[0]["contact"];?></td>
                             </tr>
                             <tr>
                                 <th scope="row">Email</th>
-                                <td>abcde@virginia.edu</td>
+                                <td><?=$userinfo[0]["email"];?></td>
                             </tr>
                             <tr>
                                 <th scope="row">Posts</th>
-                                <td>2</td>
+                                <td><?=$userinfo[0]["posts"];?></td>
                             </tr>
                             <tr>
                                 <th scope="row">Upvoted by</th>
-                                <td>31</td>
+                                <td><?=$userinfo[0]["upvotednumber"];?></td>
                             </tr>
                             <tr>
                                 <th scope="row">Note</th>
-                                <td>This is a long note left by the user. The user wants to write more things here in the future.</td>
+                                <td><?=$userinfo[0]["note"];?></td>
                             </tr>
                         </table>
                 </div>
@@ -120,8 +120,11 @@
                     echo "<ul>" . "<li> Price: $price$ </li>
                                     <li> Type: $category </li>
                                     <li> Status: $status </li>
-                                    <li> Upvote: $upvote </li>" . "</ul>";
-                    echo "<a class='btn btn-primary btn-lg' href='basicinfo.html'>View More</a>";
+                                    <li> Upvote: $upvote </li>" . "</ul>";                  
+                    echo "<form action='?command=basicinfo' method='post'>";
+                    echo "<input type='hidden' name='basicinfoid' value=$id>";
+                    echo "<button class='btn btn-primary btn-lg' type='submit'>View More</button>";
+                    echo "</form>";
                     echo "<br>";
                     echo "<form action='?command=delete' method='post'>";
                     echo "<input type='hidden' name='id' value=$id>";

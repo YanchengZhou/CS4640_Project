@@ -53,16 +53,18 @@
 
         <section class="container">
             <div class="row">
-                <div class= "col-4">
+                
+            
+            <div class= "col-4">
                     <h4>Basic Information</h4>  
                     <ul>
-                      <li>Name:</li>
-                      <li>Time:</li>
-                      <li>Status:</li>
-                      <li>Price:</li>
-                      <li>Poster:</li>
-                      <li>Upvotes:</li>
-                      <li>Notes:</li>
+                      <li>Name: <?php echo $item[0]['itemname']; ?></li>
+                      <li>Time: <?php echo $item[0]['time']; ?></li>
+                      <li>Status: <?php echo $item[0]['status']; ?></li>
+                      <li>Price: <?php echo $item[0]['price']; ?></li>
+                      <li>Poster: <?php echo $item[0]['poster']; ?></li>
+                      <li>Upvotes: <?php echo $item[0]['upvote']; ?></li>
+                      <li>Notes: <?php echo $item[0]['note']; ?> </li>
                     </ul>
                 </div>
                 <div class= "col-8">

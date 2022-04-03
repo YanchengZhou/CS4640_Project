@@ -36,6 +36,9 @@ class connectController {
             case "account":
                 $this->account();
                 break;
+            case "basicinfo":   //new addition
+                $this->basicinfo();
+                break;
             case "logout":
                 $this->endSession();
                 break;
@@ -75,7 +78,13 @@ class connectController {
     
      public function account() {
         $items = $this->db->query("select * from uploadhistory where userid = ?", "i", $_SESSION["userid"]);
+        $userinfo = $this->db->query("select * from user where userid = ?", "i", $_SESSION["userid"]);
         include("templates/account.php");
+     }
+
+     public function basicInfo(){
+        $item = $this->db->query("select * from uploadhistory where id2 = ?", "i", $_POST["basicinfoid"]);
+        include("templates/basicinfo.php");
      }
 
      public function delete() {
@@ -87,7 +96,7 @@ class connectController {
 
      public function search() {
         // if fail ...
-        $itmes = $this->db->query("select * from uploadhistory where itemname = ?", 's', $_POST["search"]);
+        $items = $this->db->query("select * from uploadhistory where itemname = ?", 's', $_POST["search"]);
         include("templates/mainpage.php");
      }
 

@@ -67,10 +67,11 @@
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="form-outline">
-                                        <input type="search" name="search" class="form-control" placeholder="Search name"/>
+                                        <form action='?command=search' method='post'>
+                                            <input type="search" name="search" class="form-control" placeholder="Search name"/>
+                                            <button class='btn btn-primary' type='submit'>Search</button>
+                                        </form>
                                     </div>
-<!--                                    submit button - add form-->
-                                    <a href="?command=search" class="btn btn-primary">Search</a>
                                 </div>
                             </div>
                         </div>
@@ -188,6 +189,7 @@
                     }
 
                     foreach($items as $item) {
+                        $id = $item['id2'];
                         $name = $item['itemname'];
                         $poster = $item['poster'];
                         $time = $item['time'];
@@ -203,7 +205,11 @@
                                     <li> Type: $category </li>
                                     <li> Status: $status </li>
                                     <li> Upvote: $upvote </li>" . "</ul>";
-                        echo "<a class='btn btn-primary btn-lg' href='basicinfo.html'>View More</a>" . "</div>";
+                        echo "<form action='?command=basicinfo' method='post'>";
+                        echo "<input type='hidden' name='basicinfoid' value=$id>";
+                        echo "<button class='btn btn-primary btn-lg' type='submit'>View More</button>";
+                        echo "</form>" . "</div>";
+
                         echo "<div class='col-md-8'>" . "<img class='card-img-top' src='images/item.jpg' alt='No picture available'>";
                         echo "</div>" . "</div>" . "</div>" . "<br>";
                     }
