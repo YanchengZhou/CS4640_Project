@@ -51,43 +51,43 @@
         </nav>
         
         <section class="container">
-            <form action="?command=upload" id = "uploadpageform">
+            <form action="?command=upload" method="post">
                 <div class="row">       
                     <div class= "col-4">
                         <h4>Upload Info</h4>  
                             <ul>
                               <li>
                                   <label for="name">Name:</label><br>
-                                  <input style="width: 100%" type="text" id="name" name="itemname">
+                                  <input style="width: 100%" type="text" maxlength="30" id="name" name="itemname" required>
                               </li>
                               <li>
                                   <label for="time">Time:</label>
-                                  <input style="width: 100%" type="text" id="time" name="time">
+                                  <input style="width: 100%" type="text" maxlength="30" id="time" name="time" placeholder="in format like 20201225" required>
                               </li>
                               <li>
                                   <label for="status">Status:</label><br>
-                                  <input style="width: 100%" type="text" id="status" name="status">
+                                  <input style="width: 100%" type="text" maxlength="100" id="status" name="status" required>
                               </li>
                               <li>
                                   <label for="price">Price:</label>
-                                  <input style="width: 100%" type="text" id="price" name="price">
+                                  <input style="width: 100%" type="text" maxlength="6" id="price" name="price" required>
                               </li>
                               <li>
                                   <label for="poster">Poster:</label>
-                                  <input style="width: 100%" type="text" id="poster" name="poster">
+                                  <input style="width: 100%" type="text" maxlength="100" id="poster" name="poster" required>
                               </li>
                               <li>
                                   <label for="note">Note:</label>
-                                  <input style="width: 100%" type="text" id="note" name="note">
+                                  <input style="width: 100%" type="text" maxlength="100" id="note" name="note" required>
                               </li>
                             </ul>
                     </div>
                     <div class= "col-8">  
-                        <h4>Upload Image</h4>
-                          <label for="img">Select image:</label>
-                          <input type="file" id="img" name="img" accept="image/*">
+                        <h4>Upload </h4>
+                          <!-- <label for="img">Select image:</label>
+                          <input type="file" id="img" name="img" accept="image/*"> -->
                           <p>Please select post category:</p>
-                          <input type="radio" id="Items" name="category" value="Items">
+                          <input type="radio" id="Items" name="category" value="Items" required>
                           <label for="Items">Used Items</label><br>
                           <input type="radio" id="Rentals" name="category" value="Rentals">
                           <label for="Rentals">House Rentals</label><br>
