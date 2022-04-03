@@ -16,7 +16,7 @@ if (isset($_GET["command"]))
 if (!isset($_SESSION["email"])) {
    // they need to see the login
    // go to mainpage before setting login page
-   $command = "?command=account";
+   $command = "login";
 }
 
 // Instantiate the controller and run

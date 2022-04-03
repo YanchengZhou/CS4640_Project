@@ -70,7 +70,7 @@
                               </li>
                               <li>
                                   <label for="price">Price:</label>
-                                  <input style="width: 100%" type="text" maxlength="6" id="price" name="price" required>
+                                  <input style="width: 100%" type="number" maxlength="6" id="price" name="price" required>
                               </li>
                               <li>
                                   <label for="poster">Poster:</label>
