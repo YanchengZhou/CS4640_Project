@@ -27,13 +27,13 @@
                         <a class="nav-link active" href="?command=index"> Home | </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> Used Items | </a>
+                        <a class="nav-link" href="?command=usedItems"> Used Items | </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> House Rentals | </a>
+                        <a class="nav-link" href="?command=rentals"> House Rentals | </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> Carpooling | </a>
+                        <a class="nav-link" href="?command=carpooling"> Carpooling | </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="?command=account"> Account | </a>
@@ -67,9 +67,10 @@
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="form-outline">
-                                        <input type="search" class="form-control" placeholder="Input keyword.."/>
+                                        <input type="search" name="search" class="form-control" placeholder="Search name"/>
                                     </div>
-                                    <a href="#" class="btn btn-primary">Search</a>
+<!--                                    submit button - add form-->
+                                    <a href="?command=search" class="btn btn-primary">Search</a>
                                 </div>
                             </div>
                         </div>
@@ -81,26 +82,6 @@
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <h5> Time: within </h5>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="time">
-                                        <label class="form-check-label">8 hours</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="time">
-                                        <label class="form-check-label">1 day</label>
-                                    </div>
-                                    <br>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="time">
-                                        <label class="form-check-label">1 week </label> &nbsp;
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="time" checked>
-                                        <label class="form-check-label">Any</label>
-                                    </div>
-                                    <br><br>
-
                                     <h5> Price: $ </h5>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="price">
@@ -236,11 +217,11 @@
             <p class="col-md-4 mb-0 text-muted">© All rights authorized to Zhou, Song, 2022</p>
 
             <ul class="nav col-md-8 justify-content-end">
-                <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Used Items</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">House Rentals</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Carpooling</a></li>
-                <li class="nav-item"><a href="account.html" class="nav-link px-2 text-muted">Account</a></li>
+                <li class="nav-item"><a href="?command=index" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="?command=usedItems" class="nav-link px-2 text-muted">Used Items</a></li>
+                <li class="nav-item"><a href="?command=rentals" class="nav-link px-2 text-muted">House Rentals</a></li>
+                <li class="nav-item"><a href="?command=carpooling" class="nav-link px-2 text-muted">Carpooling</a></li>
+                <li class="nav-item"><a href="?command=account" class="nav-link px-2 text-muted">Account</a></li>
             </ul>
         </footer>
     </div>

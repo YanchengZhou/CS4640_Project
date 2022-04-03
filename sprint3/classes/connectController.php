@@ -15,8 +15,23 @@ class connectController {
             case "index":
                 $this->indexPage();
                 break;
+            case "usedItems":
+                $this->usedItems();
+                break;
+            case "rentals":
+                $this->rentals();
+                break;
+            case "carpooling":
+                $this->carpooling();
+                break;
+            case "search":
+                $this->search();
+                break;
             case "upload":
                 $this->upload();
+                break;
+            case "delete":
+                $this->delete();
                 break;
             case "account":
                 $this->account();
@@ -42,12 +57,40 @@ class connectController {
 
         include("templates/mainpage.php");
     }
+
+    public function usedItems() {
+        $items = $this->db->query("select * from uploadhistory where category = ?", "s", "Used Items");
+        include("templates/mainpage.php");
+    }
+
+    public function rentals() {
+        $items = $this->db->query("select * from uploadhistory where category = ?", "s", "Housing");
+        include("templates/mainpage.php");
+    }
+
+    public function carpooling() {
+        $items = $this->db->query("select * from uploadhistory where category = ?", "s", "Carpooling");
+        include("templates/mainpage.php");
+    }
     
      public function account() {
+        $items = $this->db->query("select * from uploadhistory where userid = ?", "i", $_SESSION["userid"]);
         include("templates/account.php");
      }
 
-    
+     public function delete() {
+        $delete = $this->db->query("delete from uploadhistory where id2 = ?", "i", $_POST["id"]);
+        $items = $this->db->query("select * from uploadhistory where userid = ?", "i", $_SESSION["userid"]);
+        header("Location: ?command=account");
+        include("templates/account.php");
+     }
+
+     public function search() {
+        // if fail ...
+        $itmes = $this->db->query("select * from uploadhistory where itemname = ?", 's', $_POST["search"]);
+        include("templates/mainpage.php");
+     }
+
     //since user is logged in, we have access to upload page and session's email and name
     public function upload(){
 

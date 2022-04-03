@@ -14,7 +14,6 @@
 
     <link rel="stylesheet/less" type="text/css" href="styles/main.less" />
     <script src="less.min.js" ></script>
-
     <title> Connect Project </title>
 </head>
 
@@ -27,13 +26,13 @@
                         <a class="nav-link active" href="?command=index"> Home | </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> Used Items | </a>
+                        <a class="nav-link" href="?command=usedItems"> Used Items | </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> House Rentals | </a>
+                        <a class="nav-link" href="?command=rentals"> House Rentals | </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> Carpooling | </a>
+                        <a class="nav-link" href="?command=carpooling"> Carpooling | </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="?command=account"> Account | </a>
@@ -97,107 +96,42 @@
             </div>
 
             <div class="col-md-8">
-                <h1 style="background: lavender">Personal Collections</h1>
+                <h1 style="background: lavender">My Posts</h1>
 
-                <div class="p-5 mb-4">
-                    <div class="upper">
-                        <h1 class="display-8 fw-bold"> Item1 Name </h1>
-                        <h4> posted by Poster1 Name on Post Time </h4>
-                    </div>
+                <?php
+                if(!$items || empty($items)) {
+                    echo "<h3> You haven't posted any items yet.</h3>";
+                    echo "<br>". "<br>". "<br>". "<br>". "<br>". "<br>". "<br>". "<br>". "<br>". "<br>". "<br>". "<br>". "<br>". "<br>". "<br>". "<br>". "<br>". "<br>";
+                }
 
-                    <div class="row">
-                        <div class="col-md-4 itemInfo">
-                            <ul>
-                                <li> Price: 100$ </li>
-                                <li> State: Available </li>
-                                <li> Upvote: 1 </li>
-                            </ul>
+                foreach($items as $item) {
+                    $id = $item['id2'];
+                    $name = $item['itemname'];
+                    $poster = $item['poster'];
+                    $time = $item['time'];
+                    $price = $item['price'];
+                    $status = $item['status'];
+                    $upvote = $item['upvote'];
+                    $category = $item['category'];
 
-                            <a class="btn btn-primary btn-lg" href="basicinfo.html">View More</a> <br>
-                            <a class="btn btn-danger btn-lg" href="#">Delete</a> <br>
-                            <a class="btn btn-secondary btn-lg" href="#">Move to top</a> <br>
-                        </div>
-                        <div class="col-md-8">
-                            <img class="card-img-top" src="images/item.jpg" alt="No picture available">
-                        </div>
-                    </div>
-                </div>
-                <br>
+                    echo "<div class='p-5 mb-4'>" . "<div class='upper'>" .
+                        "<h1 class='display-8 fw-bold'> $name </h1>" . " <h4 style='text-align:right'> posted by $poster on $time </h4>" . "</div>";
+                    echo "<div class='row'>" . "<div class='col-md-4 itemInfo'>";
+                    echo "<ul>" . "<li> Price: $price$ </li>
+                                    <li> Type: $category </li>
+                                    <li> Status: $status </li>
+                                    <li> Upvote: $upvote </li>" . "</ul>";
+                    echo "<a class='btn btn-primary btn-lg' href='basicinfo.html'>View More</a>";
+                    echo "<br>";
+                    echo "<form action='?command=delete' method='post'>";
+                    echo "<input type='hidden' name='id' value=$id>";
+                    echo "<button class='btn btn-danger btn-lg' type='submit'>Delete</button>". "</div>";
+                    echo "</form>";
+                    echo "<div class='col-md-8'>" . "<img class='card-img-top' src='images/item.jpg' alt='No picture available'>";
+                    echo "</div>" . "</div>" . "</div>" . "<br>";
+                }
+                ?>
 
-                <div class="p-5 mb-4">
-                    <div class="upper">
-                        <h1 class="display-8 fw-bold"> Item2 Name </h1>
-                        <h4> posted by Poster2 Name on Post Time </h4>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 itemInfo">
-                            <ul>
-                                <li> Price: 200$ </li>
-                                <li> State: Available </li>
-                                <li> Upvote: 2 </li>
-                            </ul>
-
-                            <a class="btn btn-primary btn-lg" href="basicinfo.html">View More</a> <br>
-                            <a class="btn btn-danger btn-lg" href="#">Delete</a> <br>
-                            <a class="btn btn-secondary btn-lg" href="#">Move to top</a> <br>
-                        </div>
-                        <div class="col-md-8">
-                            <img class="card-img-top" src="images/item.jpg" alt="No picture available">
-                        </div>
-                    </div>
-                </div>
-                <br>
-
-                <div class="p-5 mb-4">
-                    <div class="upper">
-                        <h1 class="display-8 fw-bold"> Item3 Name </h1>
-                        <h4> posted by Poster3 Name on Post Time </h4>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 itemInfo">
-                            <ul>
-                                <li> Price: 300$ </li>
-                                <li> State: Available </li>
-                                <li> Upvote: 3 </li>
-                            </ul>
-
-                            <a class="btn btn-primary btn-lg" href="basicinfo.html">View More</a> <br>
-                            <a class="btn btn-danger btn-lg" href="#">Delete</a> <br>
-                            <a class="btn btn-secondary btn-lg" href="#">Move to top</a> <br>
-                        </div>
-                        <div class="col-md-8">
-                            <img class="card-img-top" src="images/item.jpg" alt="No picture available">
-                        </div>
-                    </div>
-                </div>
-                <br>
-
-                <div class="p-5 mb-4">
-                    <div class="upper">
-                        <h1 class="display-8 fw-bold"> Item4 Name </h1>
-                        <h4> posted by Poster4 Name on Post Time </h4>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 itemInfo">
-                            <ul>
-                                <li> Price: 400$ </li>
-                                <li> State: Available </li>
-                                <li> Upvote: 4 </li>
-                            </ul>
-
-                            <a class="btn btn-primary btn-lg" href="basicinfo.html">View More</a> <br>
-                            <a class="btn btn-danger btn-lg" href="#">Delete</a> <br>
-                            <a class="btn btn-secondary btn-lg" href="#">Move to top</a> <br>
-                        </div>
-                        <div class="col-md-8">
-                            <img class="card-img-top" src="images/item.jpg" alt="No picture available">
-                        </div>
-                    </div>
-                </div>
-                <br>
             </div>
         </div>
     </div>
@@ -208,11 +142,11 @@
             <p class="col-md-4 mb-0 text-muted">© All rights authorized to Zhou, Song, 2022</p>
 
             <ul class="nav col-md-8 justify-content-end">
-                <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Used Items</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">House Rentals</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Carpooling</a></li>
-                <li class="nav-item"><a href="account.html" class="nav-link px-2 text-muted">Account</a></li>
+                <li class="nav-item"><a href="?command=index" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="?command=usedItems" class="nav-link px-2 text-muted">Used Items</a></li>
+                <li class="nav-item"><a href="?command=rentals" class="nav-link px-2 text-muted">House Rentals</a></li>
+                <li class="nav-item"><a href="?command=carpooling" class="nav-link px-2 text-muted">Carpooling</a></li>
+                <li class="nav-item"><a href="?command=account" class="nav-link px-2 text-muted">Account</a></li>
             </ul>
         </footer>
     </div>

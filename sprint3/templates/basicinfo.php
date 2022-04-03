@@ -23,13 +23,13 @@
                             <a class="nav-link active" href="?command=index"> Home | </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"> Used Items | </a>
+                            <a class="nav-link" href="?command=usedItems"> Used Items | </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"> House Rentals | </a>
+                            <a class="nav-link" href="?command=rentals"> House Rentals | </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"> Carpooling | </a>
+                            <a class="nav-link" href="?command=carpooling"> Carpooling | </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="?command=account"> Account | </a>
@@ -97,12 +97,12 @@
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
                 <p class="col-md-4 mb-0 text-muted">© All rights authorized to Zhou, Song, 2022</p>
 
-                <ul class="nav col-md-8justify-content-end">
-                    <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Home</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Used Items</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">House Rentals</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Carpooling</a></li>
-                    <li class="nav-item"><a href="account.html" class="nav-link px-2 text-muted">Account</a></li>
+                <ul class="nav col-md-8 justify-content-end">
+                    <li class="nav-item"><a href="?command=index" class="nav-link px-2 text-muted">Home</a></li>
+                    <li class="nav-item"><a href="?command=usedItems" class="nav-link px-2 text-muted">Used Items</a></li>
+                    <li class="nav-item"><a href="?command=rentals" class="nav-link px-2 text-muted">House Rentals</a></li>
+                    <li class="nav-item"><a href="?command=carpooling" class="nav-link px-2 text-muted">Carpooling</a></li>
+                    <li class="nav-item"><a href="?command=account" class="nav-link px-2 text-muted">Account</a></li>
                 </ul>
             </footer>
         </div>
