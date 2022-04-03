@@ -62,15 +62,11 @@
                               </li>
                               <li>
                                   <label for="time">Time:</label>
-                                  <input style="width: 100%" type="text" maxlength="30" id="time" name="time" placeholder="in format like 20201225" required>
-                              </li>
-                              <li>
-                                  <label for="status">Status:</label><br>
-                                  <input style="width: 100%" type="text" maxlength="100" id="status" name="status" required>
+                                  <input style="width: 100%" type="date" maxlength="30" id="time" name="time" placeholder="in format like 20201225" required>
                               </li>
                               <li>
                                   <label for="price">Price:</label>
-                                  <input style="width: 100%" type="number" maxlength="6" id="price" name="price" required>
+                                  <input style="width: 100%" type="number" step="0.0001" maxlength="6" id="price" name="price" required>
                               </li>
                               <li>
                                   <label for="poster">Poster:</label>
@@ -80,6 +76,15 @@
                                   <label for="note">Note:</label>
                                   <input style="width: 100%" type="text" maxlength="100" id="note" name="note" required>
                               </li>
+                                <li>
+                                    <label for="status">Status:</label><br>
+                                    <input type="radio" name="status" value="available" required>
+                                    <label>Available</label> &nbsp
+                                    <input type="radio" name="status" value="pending" required>
+                                    <label>Pending</label> &nbsp
+                                    <input type="radio" name="status" value="unavailable" required>
+                                    <label>Unavailable</label><br>
+                                </li>
                             </ul>
                     </div>
                     <div class= "col-8">  
@@ -87,9 +92,9 @@
                           <!-- <label for="img">Select image:</label>
                           <input type="file" id="img" name="img" accept="image/*"> -->
                           <p>Please select post category:</p>
-                          <input type="radio" id="Items" name="category" value="Items" required>
+                          <input type="radio" id="Items" name="category" value="Used Items" required>
                           <label for="Items">Used Items</label><br>
-                          <input type="radio" id="Rentals" name="category" value="Rentals">
+                          <input type="radio" id="Rentals" name="category" value="Housing">
                           <label for="Rentals">House Rentals</label><br>
                           <input type="radio" id="Carpooling" name="category" value="Carpooling">
                           <label for="Carpooling">Car Pooling</label><br>

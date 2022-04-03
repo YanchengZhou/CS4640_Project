@@ -17,8 +17,7 @@ $db ->query("create table user(
                 userid int not null auto_increment,
                 email text not null unique,
                 name text not null,
-                password text not null,
-               
+                password text not null,       
                 gender text default 'notspecified',
                 age text default 'notspecified',
                 contact text default 'notspecified',
@@ -40,8 +39,9 @@ $db ->query("create table uploadhistory(
                 price text not null,
                 poster text not null,
                 status text not null,
-                time text not null,
+                time date not null,
                 category text not null,
+                upvote int not null default 0,
 
                 primary key(id2),
                 FOREIGN KEY (userid) REFERENCES user(userid)

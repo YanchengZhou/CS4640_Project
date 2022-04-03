@@ -38,6 +38,8 @@ class connectController {
     
 
     public function indexPage(){
+        $items = $this->db->query("select * from uploadhistory");
+
         include("templates/mainpage.php");
     }
     
@@ -50,9 +52,16 @@ class connectController {
     public function upload(){
 
        if (isset($_POST["note"]) && !empty($_POST["note"]) && isset($_POST["price"]) && !empty($_POST["price"]) && isset($_POST["time"]) && !empty($_POST["time"]) && isset($_POST["status"]) && !empty($_POST["status"]) && isset($_POST["itemname"]) && !empty($_POST["itemname"]) && isset($_POST["poster"]) && !empty($_POST["poster"])){
-           //update this user's post number by 1
+
+            //if date invalid, set date to current date
+           if(!$this->validateDate($_POST["time"])) {
+                $_POST["time"] = date("Y-m-d");
+           }
+
            $data = $this->db->query("update user set posts = posts + 1 where userid = ?" ,"s", $_SESSION["userid"]);
 
+
+           //update this user's post number by 1
            $data2 = $this->db->query("insert into uploadhistory (itemname, note, price, poster, status, time, category, userid) values (?, ?, ?, ?, ?, ?, ?, ?);","sssssssi",$_POST["itemname"],$_POST["note"],$_POST["price"],$_POST["poster"],$_POST["status"],$_POST["time"],$_POST["category"],$_SESSION["userid"]);
            header("Location: ?command=index");
        }
@@ -101,5 +110,10 @@ class connectController {
             }
         }
         include "templates/login.php";
+    }
+
+    function validateDate($date, $format = 'Y-m-d'){
+        $d = DateTime::createFromFormat($format, $date);
+        return $d && $d->format($format) === $date;
     }
 }
