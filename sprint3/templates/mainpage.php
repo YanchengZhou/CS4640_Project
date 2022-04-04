@@ -82,53 +82,58 @@
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <h5> Price: $ </h5>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="price">
-                                        <label class="form-check-label">&lt;10</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="price">
-                                        <label class="form-check-label">10-50</label>
-                                    </div>
-                                    <br>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="price">
-                                        <label class="form-check-label">>50</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="price" checked>
-                                        <label class="form-check-label">Any</label>
-                                    </div>
-                                    <br><br>
+                                
+                            
+                            
+                            <div class="accordion-body">
+                                <form action='?command=filter' method='post'>
+                                        <h5> Price: $ </h5>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="filterprice" value = "lessthan10">
+                                            <label class="form-check-label">&lt;10</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="filterprice" value = "between">
+                                            <label class="form-check-label">10-50</label>
+                                        </div>
+                                        <br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="filterprice" value = "morethan50">
+                                            <label class="form-check-label">>50</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="filterprice" value = "any" checked>
+                                            <label class="form-check-label">Any</label>
+                                        </div>
+                                        <br><br>
 
-                                    <h5> State </h5>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="state">
-                                        <label class="form-check-label">Available</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="state">
-                                        <label class="form-check-label">Pending</label>
-                                    </div>
-                                    <br>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="state">
-                                        <label class="form-check-label">Closed</label> &nbsp; &nbsp;
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="state" checked>
-                                        <label class="form-check-label">Any</label>
-                                    </div>
-                                    <br><br>
+                                        <h5> State </h5>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="filterstate" value = "available">
+                                            <label class="form-check-label">Available</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="filterstate" value = "pending">
+                                            <label class="form-check-label">Pending</label>
+                                        </div>
+                                        <br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="filterstate" value = "unavailable">
+                                            <label class="form-check-label">Unavailable</label> &nbsp; &nbsp;
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="filterstate" value = "any" checked>
+                                            <label class="form-check-label">Any</label>
+                                        </div>
+                                        <br><br>
 
-                                    <p>
-                                        <a href="#" class="btn btn-primary">Filter</a>
-                                    </p>
-
-                                </div>
+                                        <p>
+                                            <button class='btn btn-primary' type='submit'>Filter</button>
+                                        </p>
+                                    </div>
+                                </form>
                             </div>
+                            
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingThree">
@@ -138,43 +143,50 @@
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <h5> By Default </h5>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sort" checked>
-                                        <label class="form-check-label">No Sort</label>
-                                    </div>
-                                    <br> <br>
+                                    <form action='?command=sort' method='post'>
 
-                                    <h5> By Time </h5>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sort">
-                                        <label class="form-check-label">Latest</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sort">
-                                        <label class="form-check-label">Earliest</label>
-                                    </div>
-                                    <br> <br>
+                                        <h5> By Time </h5>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="sorttime" value = "latest">
+                                            <label class="form-check-label">Latest</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="sorttime" value = "earliest">
+                                            <label class="form-check-label">Earliest</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="sorttime" value = "any" checked>
+                                            <label class="form-check-label">Any</label>
+                                        </div>
+                                        <br> <br>
 
-                                    <h5> By Price </h5>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sort">
-                                        <label class="form-check-label">Lowest</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sort">
-                                        <label class="form-check-label">Highest</label>
-                                    </div>
-                                    <br> <br>
+                                        <h5> By Price </h5>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="sortprice" value = "lowest">
+                                            <label class="form-check-label">Lowest</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="sortprice" value = "highest">
+                                            <label class="form-check-label">Highest</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="sortprice" value = "any" checked>
+                                            <label class="form-check-label">Any</label>
+                                        </div>
+                                        <br> <br>
 
-                                    <h5> By Upvote </h5>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sort">
-                                        <label class="form-check-label">Highest</label>
-                                    </div>
-                                    <br> <br>
-
-                                    <a href="#" class="btn btn-primary">Sort</a>
+                                        <h5> By Upvote </h5>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="sortupvote" value = "highupvote">
+                                            <label class="form-check-label">Highest</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="sortupvote" value = "any" checked>
+                                            <label class="form-check-label">Any</label>
+                                        </div>
+                                        <br> <br>                   
+                                        <button class='btn btn-primary' type='submit'>Sort</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

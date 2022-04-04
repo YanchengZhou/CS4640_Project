@@ -36,7 +36,7 @@ $db ->query("create table uploadhistory(
                 
                 itemname text not null,
                 note text not null,
-                price text not null,
+                price float not null,
                 poster text not null,
                 status text not null,
                 time date not null,

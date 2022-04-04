@@ -27,6 +27,12 @@ class connectController {
             case "search":
                 $this->search();
                 break;
+            case "filter": // new addition
+                $this->filter();
+                break;            
+            case "sort":  // new addition
+                $this->sort();
+                break;
             case "upload":
                 $this->upload();
                 break;
@@ -95,10 +101,84 @@ class connectController {
      }
 
      public function search() {
-        // if fail ...
-        $items = $this->db->query("select * from uploadhistory where itemname = ?", 's', $_POST["search"]);
+        // if fail ... then $items will be false, so we already covered it
+        $items = $this->db->query("select * from uploadhistory where itemname = ?", 's', $_POST["search"]);        
         include("templates/mainpage.php");
      }
+
+     public function filter(){ //new
+        if ($_POST["filterprice"] === "any" && $_POST["filterstate"] !== "any") {
+            $items = $this->db->query("select * from uploadhistory where status = ?", 's', $_POST["filterstate"]);        
+        }else if ($_POST["filterprice"] !== "any" && $_POST["filterstate"] === "any") {
+            if($_POST["filterprice"] === "lessthan10"){
+                $items = $this->db->query("select * from uploadhistory where price < ?", 'd', 10);        
+            }else if($_POST["filterprice"] === "morethan50"){
+                $items = $this->db->query("select * from uploadhistory where price > ?", 'd', 50);        
+            }else{
+                $items = $this->db->query("select * from uploadhistory where price between ? and ?", 'dd', 10, 50);
+            }         
+        }else if ($_POST["filterprice"] !== "any" && $_POST["filterstate"] !== "any"){
+            if($_POST["filterprice"] === "lessthan10"){
+                $items = $this->db->query("select * from uploadhistory where status = ? and price < ?", 'sd', $_POST["filterstate"], 10);        
+            }else if($_POST["filterprice"] === "morethan50"){
+                $items = $this->db->query("select * from uploadhistory where status = ? and price > ?", 'sd', $_POST["filterstate"], 50);        
+            }else{
+                $items = $this->db->query("select * from uploadhistory where status = ? and price between ? and ?", 'sdd', $_POST["filterstate"], 10, 50);
+            }  
+        }else{
+            $items = $this->db->query("select * from uploadhistory");        
+        }
+        include("templates/mainpage.php");
+     }
+
+     public function sort(){ //new
+        if ($_POST["sorttime"] !== "any" && $_POST["sortprice"] !== "any" && $_POST["sortupvote"] !== "any") {
+            if($_POST["sorttime"] === "latest" && $_POST["sortprice"] === "highest" ){
+                $items = $this->db->query("select * from uploadhistory order by time DESC, price DESC, upvote DESC");        
+            }else if($_POST["sorttime"] === "latest" && $_POST["sortprice"] === "lowest" ){
+                $items = $this->db->query("select * from uploadhistory order by time DESC, price ASC, upvote DESC");        
+            }else if($_POST["sorttime"] === "earliest" && $_POST["sortprice"] === "highest" ){
+                $items = $this->db->query("select * from uploadhistory order by time ASC, price DESC, upvote DESC");        
+            }else if($_POST["sorttime"] === "earliest" && $_POST["sortprice"] === "lowest" ){
+                $items = $this->db->query("select * from uploadhistory order by time ASC, price ASC, upvote DESC");        
+            }     
+        } else if($_POST["sorttime"] === "any" && $_POST["sortprice"] !== "any" && $_POST["sortupvote"] !== "any"){
+            if($_POST["sortprice"] === "highest"){
+                $items = $this->db->query("select * from uploadhistory order by price DESC, upvote DESC");        
+            }else if($_POST["sortprice"] === "lowest"){
+                $items = $this->db->query("select * from uploadhistory order by price ASC, upvote DESC");        
+            }
+        } else if($_POST["sorttime"] !== "any" && $_POST["sortprice"] === "any" && $_POST["sortupvote"] !== "any"){
+            if($_POST["sorttime"] === "latest"){
+                $items = $this->db->query("select * from uploadhistory order by time DESC, upvote DESC");        
+            }else if($_POST["sorttime"] === "earliest"){
+                $items = $this->db->query("select * from uploadhistory order by time ASC, upvote DESC");        
+            }
+        } else if($_POST["sorttime"] !== "any" && $_POST["sortprice"] !== "any" && $_POST["sortupvote"] === "any"){
+            if($_POST["sorttime"] === "latest" && $_POST["sortprice"] === "highest" ){
+                $items = $this->db->query("select * from uploadhistory order by time DESC, price DESC");        
+            }else if($_POST["sorttime"] === "latest" && $_POST["sortprice"] === "lowest" ){
+                $items = $this->db->query("select * from uploadhistory order by time DESC, price ASC");        
+            }else if($_POST["sorttime"] === "earliest" && $_POST["sortprice"] === "highest" ){
+                $items = $this->db->query("select * from uploadhistory order by time ASC, price DESC");        
+            }else if($_POST["sorttime"] === "earliest" && $_POST["sortprice"] === "lowest" ){
+                $items = $this->db->query("select * from uploadhistory order by time ASC, price ASC");        
+            }
+        } else if($_POST["sorttime"] === "any" && $_POST["sortprice"] === "any" && $_POST["sortupvote"] !== "any"){
+            $items = $this->db->query("select * from uploadhistory order by upvote DESC");        
+        } else if($_POST["sorttime"] === "latest" && $_POST["sortprice"] === "any" && $_POST["sortupvote"] === "any"){
+            $items = $this->db->query("select * from uploadhistory order by time DESC");        
+        } else if($_POST["sorttime"] === "earliest" && $_POST["sortprice"] === "any" && $_POST["sortupvote"] === "any"){
+            $items = $this->db->query("select * from uploadhistory order by time ASC");        
+        } else if($_POST["sorttime"] === "any" && $_POST["sortprice"] === "highest" && $_POST["sortupvote"] === "any"){
+            $items = $this->db->query("select * from uploadhistory order by price DESC"); 
+        } else if($_POST["sorttime"] === "any" && $_POST["sortprice"] === "lowest" && $_POST["sortupvote"] === "any"){
+            $items = $this->db->query("select * from uploadhistory order by price ASC");
+        } else{
+            $items = $this->db->query("select * from uploadhistory");
+        }     
+        include("templates/mainpage.php");        
+    }
 
     //since user is logged in, we have access to upload page and session's email and name
     public function upload(){
