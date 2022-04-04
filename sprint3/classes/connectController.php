@@ -206,7 +206,7 @@ class connectController {
             // need to create a table called user
             $data = $this->db->query("select * from user where email = ?;", "s", $_POST["email"]);
             if ($data === false) {
-                $error_msg = "Error checking for user";
+                echo "<div class='alert alert-danger'> Error checking for user.</div>";
             } else if (!empty($data)) {
                 if ($data[0]["name"] === $_POST["name"] && password_verify($_POST["password"], $data[0]["password"])) {
                     $_SESSION["name"] = $data[0]["name"];
@@ -220,13 +220,13 @@ class connectController {
                     
                     header("Location: ?command=index");
                 } else{
-                    $error_msg = "Wrong password/name";
+                    echo "<div class='alert alert-danger'> Password was incorrect.</div>";
                 }
             } else {
                 $insert = $this->db->query("insert into user (name, email, password, gender, age, contact, note) values (?, ?, ?, ?, ?, ?, ?);", 
                         "sssssss", $_POST["name"], $_POST["email"], password_hash($_POST["password"], PASSWORD_DEFAULT), $_POST["gender"], $_POST["age"], $_POST["contact"], $_POST["note"]);
                 if ($insert === false) {
-                    $error_msg = "Error inserting user";
+                    echo "<div class='alert alert-danger'> Error inserting user.</div>";
                 }else{
                     $_SESSION["name"] = $_POST["name"];
                     $_SESSION["email"] = $_POST["email"];
