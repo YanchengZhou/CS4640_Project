@@ -10,7 +10,7 @@ $db = new mysqli(Config::$db["host"], Config::$db["user"], Config::$db["pass"], 
 // NOTE please: This is setup.php which is used to generate the table, please use it only once by loading manually to create the table
 //here for the sake of security, no duplicate email 
 //$db->query("drop table if exists customer;");
-
+// NOTE: Yancheng Zhou and Xiyuan Song designed the tables together
 
 //to store information for display in account.html page
 $db ->query("create table user(

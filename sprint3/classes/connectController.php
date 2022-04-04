@@ -9,6 +9,8 @@ class connectController {
         $this->command = $command;
         $this->db = new Database();
     }
+    // NOTE CONTRIBUTION : Yancheng Zhou yz4xy worked on useditems, carpooling etc and login, upload, search, delete, testing the php code
+    // Xiyuan Song xs9qpu worked on filter, login, sort, viewmore, upload, testing php code
     // NOTE please: There is a setup.php which is used to generate the table, please use it only once by loading manually to create the table
     public function run() {
         switch($this->command) {
@@ -106,7 +108,7 @@ class connectController {
         include("templates/mainpage.php");
      }
 
-     public function filter(){ //new
+     public function filter(){ //filter posts
         if ($_POST["filterprice"] === "any" && $_POST["filterstate"] !== "any") {
             $items = $this->db->query("select * from uploadhistory where status = ?", 's', $_POST["filterstate"]);        
         }else if ($_POST["filterprice"] !== "any" && $_POST["filterstate"] === "any") {
@@ -131,7 +133,7 @@ class connectController {
         include("templates/mainpage.php");
      }
 
-     public function sort(){ //new
+     public function sort(){ //sort posts
         if ($_POST["sorttime"] !== "any" && $_POST["sortprice"] !== "any" && $_POST["sortupvote"] !== "any") {
             if($_POST["sorttime"] === "latest" && $_POST["sortprice"] === "highest" ){
                 $items = $this->db->query("select * from uploadhistory order by time DESC, price DESC, upvote DESC");        

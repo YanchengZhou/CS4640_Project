@@ -5,7 +5,7 @@
          <meta charset="utf-8">
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
          <meta name="viewport" content="width=device-width, initial-scale=1"> 
-         <meta name="author" content="Yancheng Zhou, Xiyuan Song(worked on this)">
+         <meta name="author" content="Yancheng Zhou(worked on this), Xiyuan Song(worked on this)">
          <meta name="description" content="uploadpage">
          <meta name="keywords" content="sprint">  
          <link rel="stylesheet" type="text/css" href="styles/info_upload.css">
