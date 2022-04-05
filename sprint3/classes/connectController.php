@@ -213,20 +213,44 @@ class connectController {
                 if ($data[0]["name"] === $_POST["name"] && password_verify($_POST["password"], $data[0]["password"])) {
                     $_SESSION["name"] = $data[0]["name"];
                     $_SESSION["email"] = $data[0]["email"];
-                    
+                    //for old users
                     $getuserid = $this->db->query("select * from user where email = ? and name = ?" ,"ss", $_SESSION['email'], $_SESSION['name']);
                     //locate userid from user table create session for userid
                     if (!isset($_SESSION["userid"])){
                         $_SESSION["userid"] = $getuserid[0]["userid"];
                     }
+
                     
                     header("Location: ?command=index");
                 } else{
                     echo "<div class='alert alert-danger'> Password was incorrect.</div>";
                 }
-            } else {
+            } else {  
+                //for new users  
+                if(!isset($_POST["gender"]) || empty($_POST["gender"])){
+                    $gender = "not specified";
+                }else{
+                    $gender = $_POST["gender"];
+                }
+                if(!isset($_POST["age"]) || empty($_POST["age"])){
+                    $age = "not specified";
+                }else{
+                    $age = $_POST["age"];
+                }
+                if(!isset($_POST["contact"]) || empty($_POST["contact"])){
+                    $contact = "not specified";
+                }else{
+                    $contact = $_POST["contact"];
+                }
+                if(!isset($_POST["note"]) || empty($_POST["note"])){
+                    $note = "not specified";
+                }else{
+                    $note = $_POST["note"];
+                }
+
+
                 $insert = $this->db->query("insert into user (name, email, password, gender, age, contact, note) values (?, ?, ?, ?, ?, ?, ?);", 
-                        "sssssss", $_POST["name"], $_POST["email"], password_hash($_POST["password"], PASSWORD_DEFAULT), $_POST["gender"], $_POST["age"], $_POST["contact"], $_POST["note"]);
+                        "sssssss", $_POST["name"], $_POST["email"], password_hash($_POST["password"], PASSWORD_DEFAULT), $gender, $age, $contact, $note);
                 if ($insert === false) {
                     echo "<div class='alert alert-danger'> Error inserting user.</div>";
                 }else{

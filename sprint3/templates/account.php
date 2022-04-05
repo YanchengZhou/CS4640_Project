@@ -65,7 +65,7 @@
                         <table class="table">
                             <tr>
                                 <th scope="row" style="width: 30%;">Gender</th>
-                                <td>Male</td>
+                                <td><?=$userinfo[0]["gender"];?></td>
                             </tr>
                             <tr>
                                 <th scope="row">Age</th>
