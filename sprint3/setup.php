@@ -15,7 +15,7 @@ $db = new mysqli(Config::$db["host"], Config::$db["user"], Config::$db["pass"], 
 //to store information for display in account.html page
 $db ->query("create table user(
                 userid int not null auto_increment,
-                email text not null unique,
+                email text not null,
                 name text not null,
                 password text not null,       
                 gender text,
