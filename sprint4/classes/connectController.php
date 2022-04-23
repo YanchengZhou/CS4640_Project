@@ -105,7 +105,7 @@ class connectController {
 
      public function search() {
         // if fail ... then $items will be false, so we already covered it
-        $items = $this->db->query("select * from uploadhistory where itemname = ?", 's', $_POST["search"]);        
+        $items = $this->db->query("select * from uploadhistory where locate(?, itemname) > 0", 's', $_POST["search"]);        
         include("templates/mainpage.php");
      }
 
