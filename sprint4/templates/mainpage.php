@@ -16,6 +16,7 @@
     <script src="less.min.js" ></script>
 
     <title> Connect Project </title>
+
 </head>
 
 <body>
@@ -68,9 +69,10 @@
                                 <div class="accordion-body">
                                     <div class="form-outline">
                                         <form action='?command=search' method='post'>
-                                            <input type="search" name="search" class="form-control" placeholder="Search name"/>
-                                            <button class='btn btn-primary' type='submit'>Search</button>
+                                            <input type="search" id = "namesearch" onmouseout = "validation();" name="search" class="form-control" placeholder="Search name"/>
+                                            <button class='btn btn-primary' id = "searchbutton" type='submit'>Search</button>
                                         </form>
+                                        <h6 style="color:red;" id="message"></h6>
                                     </div>
                                 </div>
                             </div>
@@ -243,7 +245,19 @@
             </ul>
         </footer>
     </div>
-    <script src="sprint4javascript.js"></script>
+    <script type="text/javascript">
+        function validation(){
+            pattern = /^[A-Za-z]+$/;
+            keyword = document.getElementById("namesearch").value;
+            if(!keyword.match(pattern)){
+                document.getElementById("message").innerHTML = "No number or symbols pls";
+                document.getElementById('searchbutton').disabled = true;
+            }else{
+                document.getElementById("message").innerHTML = "";
+                document.getElementById('searchbutton').disabled = false;
+            }
+        }
+    </script>
 </body>
 
 </html>
