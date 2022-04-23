@@ -112,5 +112,19 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-     </body>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#email").mouseout(function(){
+                    pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    keyword = $("#email").val();
+                    if(!keyword.match(pattern)){
+                        $("#javabutton").prop('disabled', true);
+                    }else{
+                        $("#javabutton").prop('disabled', false);
+                    }
+                });
+            });
+
+        </script>
+    </body>
  </html>
