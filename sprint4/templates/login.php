@@ -63,6 +63,7 @@
                         <div style="width:40%; margin: auto;">
                             <label for="password" class="form-label" style="color:white;">Password:</label>
                             <input type="password" maxlength="40" class="form-control" id="password" name="password" required/>
+                            <h6 style= "color:red" id="warning0"></h6>
                         </div>
                         <div style="width:40%; margin: auto;">
                             <label for="name" class="form-label" style="color:white;">Name:</label>
@@ -113,6 +114,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script type="text/javascript">
+            //anon function jquery
             $(document).ready(function() {
                 $("#email").mouseout(function(){
                     pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -121,6 +123,19 @@
                         $("#javabutton").prop('disabled', true);
                     }else{
                         $("#javabutton").prop('disabled', false);
+                    }
+                });
+            });
+            //jquery arrow function
+            $(document).ready(function() {
+                $("#password").mouseout(checklength = () =>{
+                    pwlen = $("#password").val().length;
+                    if(pwlen>25){
+                        $("#javabutton").prop('disabled', true);
+                        $("#warning0").html("Password too long!");
+                    }else{
+                        $("#javabutton").prop('disabled', false);
+                        $("#warning0").html("");
                     }
                 });
             });
