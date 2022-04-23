@@ -9,7 +9,7 @@
          <meta name="description" content="basicinfo">
          <meta name="keywords" content="sprint">  
          <link rel="stylesheet" type="text/css" href="styles/info_upload.css">
-
+         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
 
          <title>UVA Connect Login</title> 
@@ -86,7 +86,7 @@
                         </div>
 
                         <div class="text-center">                
-                            <button type="submit" class="btn btn-primary">login/signup</button>
+                            <button id = "javabutton" type="submit" class="btn btn-primary">login/signup</button>
                         </div>
                     </form>
                 </div>

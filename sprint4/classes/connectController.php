@@ -97,6 +97,7 @@ class connectController {
 
      public function delete() {
         $delete = $this->db->query("delete from uploadhistory where id2 = ?", "i", $_POST["id"]);
+        $postschange = $this->db->query("update user set posts = posts - 1 where userid = ?" ,"s", $_SESSION["userid"]);
         $items = $this->db->query("select * from uploadhistory where userid = ?", "i", $_SESSION["userid"]);
         header("Location: ?command=account");
         include("templates/account.php");
