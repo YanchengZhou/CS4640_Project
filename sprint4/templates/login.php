@@ -127,15 +127,16 @@
 
                     let email = $("#email").val();
                     if(email === "") {
-                        $("#warning1").html("email cannot be empty!");
+                        document.getElementById("warning1").innerHTML = "email cannot be empty!";
                         emailValid = false;
                     }
                     else if(!matchPattern(email)){
-                        $("#warning1").html("email is invalid, should be ...@...");
+                        document.getElementById("warning1").innerHTML = "email is invalid, should be ...@...";
                         $("#javabutton").prop('disabled', true);
                         emailValid = false;
                     }else{
-                        $("#warning1").html("");
+                        document.getElementById("warning1").innerHTML = "";
+                        emailValid = true;
                         if(pwValid) {
                             $("#javabutton").prop('disabled', false);
                         }
@@ -146,18 +147,19 @@
                     let pwlen = $("#password").val().length;
                     if(pwlen === 0) {
                         $("#javabutton").prop('disabled', true);
-                        $("#warning0").html("Password cannot be empty!");
+                        document.getElementById("warning0").innerHTML = "Password cannot be empty!";
                         pwValid = false;
                     }
                     else if(pwlen>25){
                         $("#javabutton").prop('disabled', true);
-                        $("#warning0").html("Password too long!");
+                        document.getElementById("warning0").innerHTML = "Password too long!";
                         pwValid = false;
                     }else{
+                        pwValid = true;
                         if(emailValid) {
                             $("#javabutton").prop('disabled', false);
                         }
-                        $("#warning0").html("");
+                        document.getElementById("warning0").innerHTML = "";
                     }
                 });
             });

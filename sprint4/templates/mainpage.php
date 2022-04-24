@@ -278,10 +278,10 @@
         });
 
         function validation() {
-            let input = $("#namesearch").val();
+            let input = document.getElementById("namesearch").value;
             if(input === "") {
-                $("#message").html("Enter something to search");
-                $('#searchbutton').prop("disabled", true);
+                document.getElementById("message").innerHTML = "Enter something to search";
+                document.getElementById('searchbutton').disabled = true;
             }
         }
 

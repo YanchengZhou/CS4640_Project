@@ -132,10 +132,10 @@
         <script type="text/javascript">
 
             function validation(){
-                let input = $("#nameinput").val();
+                let input = document.getElementById("nameinput").value;
                 if(input === "") {
-                    $("#message").html("Name cannot be empty!");
-                    $('#submitbutton').prop("disabled", true);
+                    document.getElementById("message").innerHTML = "Name cannot be empty!";
+                    document.getElementById('submitbutton').disabled = true;
                 }
             }
 
