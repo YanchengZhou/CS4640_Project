@@ -103,7 +103,7 @@
                           <label for="Other">Other</label><br>
 
                           <button class="btn btn-primary" id="submitbutton" type="submit">Submit</button>
-                          <input class="btn btn-primary" type="reset" value="Reset">
+                          <input id="reset" class="btn btn-primary" type="reset" value="Reset">
                     </div>             
                 </div>
             </form>
@@ -130,17 +130,35 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         
         <script type="text/javascript">
+
             function validation(){
-                pattern = /^[A-Za-z0-9\s]+$/;
-                keyword = document.getElementById("nameinput").value;
-                if(!keyword.match(pattern)){
-                    document.getElementById("message").innerHTML = "No symbols pls";
-                    document.getElementById('submitbutton').disabled = true;
-                }else{
-                    document.getElementById("message").innerHTML = "";
-                    document.getElementById('submitbutton').disabled = false;
+                let input = $("#nameinput").val();
+                if(input === "") {
+                    $("#message").html("Name cannot be empty!");
+                    $('#submitbutton').prop("disabled", true);
                 }
             }
+
+            $("#reset").click(function() {
+                $("#message").html("Name cannot be empty!");
+                $('#submitbutton').prop("disabled", true);
+            });
+
+            $("#nameinput").keyup(function() {
+                let pattern = /^[A-Za-z0-9]+$/;
+                let keyword = $("#nameinput").val();
+                if(keyword === "") {
+                    $("#message").html("Name cannot be empty!");
+                    $('#submitbutton').prop("disabled", true);
+                } else if(!pattern.test(keyword)){
+                    $("#message").html("No symbols pls");
+                    $('#submitbutton').prop("disabled", true);
+                }else{
+                    $("#message").html("");
+                    $('#submitbutton').prop("disabled", false);
+                }
+            });
+
         </script>
     </body>
  </html>

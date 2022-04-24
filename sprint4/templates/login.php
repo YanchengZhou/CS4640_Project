@@ -59,6 +59,7 @@
                         <div style="width:40%; margin: auto;">
                             <label for="email" class="form-label" style="color:white;">Email:</label>
                             <input type="email" maxlength="40" class="form-control" id="email" name="email" required/>
+                            <h6 style= "color:red" id="warning1"></h6>
                         </div>
                         <div style="width:40%; margin: auto;">
                             <label for="password" class="form-label" style="color:white;">Password:</label>
@@ -109,32 +110,53 @@
             </footer>
         </div>
 
-        <script src="sprint4javascript.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script type="text/javascript">
+
             //anon function jquery
             $(document).ready(function() {
-                $("#email").mouseout(function(){
-                    pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    keyword = $("#email").val();
-                    if(!keyword.match(pattern)){
+                //arrow function
+                let matchPattern = (email) => (/\S+@\S+/).test(email);
+
+                let emailValid = true;
+                let pwValid = true;
+
+                $("#email").keyup( function(){
+
+                    let email = $("#email").val();
+                    if(email === "") {
+                        $("#warning1").html("email cannot be empty!");
+                        emailValid = false;
+                    }
+                    else if(!matchPattern(email)){
+                        $("#warning1").html("email is invalid, should be ...@...");
                         $("#javabutton").prop('disabled', true);
+                        emailValid = false;
                     }else{
-                        $("#javabutton").prop('disabled', false);
+                        $("#warning1").html("");
+                        if(pwValid) {
+                            $("#javabutton").prop('disabled', false);
+                        }
                     }
                 });
-            });
-            //jquery arrow function
-            $(document).ready(function() {
-                $("#password").mouseout(checklength = () =>{
-                    pwlen = $("#password").val().length;
-                    if(pwlen>25){
+
+                $("#password").keyup( function(){
+                    let pwlen = $("#password").val().length;
+                    if(pwlen === 0) {
+                        $("#javabutton").prop('disabled', true);
+                        $("#warning0").html("Password cannot be empty!");
+                        pwValid = false;
+                    }
+                    else if(pwlen>25){
                         $("#javabutton").prop('disabled', true);
                         $("#warning0").html("Password too long!");
+                        pwValid = false;
                     }else{
-                        $("#javabutton").prop('disabled', false);
+                        if(emailValid) {
+                            $("#javabutton").prop('disabled', false);
+                        }
                         $("#warning0").html("");
                     }
                 });

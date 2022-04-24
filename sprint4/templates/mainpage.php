@@ -88,7 +88,7 @@
                             
                             
                             <div class="accordion-body">
-                                <form action='?command=filter' method='post'>
+                                <form id="filterForm" action='?command=filter' method='post'>
                                         <h5> Price: $ </h5>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="filterprice" value = "lessthan10">
@@ -130,9 +130,12 @@
                                         <br><br>
 
                                         <p>
-                                            <button class='btn btn-primary' type='submit'>Filter</button>
+                                            <button id="filterButton" disabled="true" class='btn btn-primary' type='submit'>Filter</button>
                                         </p>
-                                    </div>
+
+                                    <h6 style="color:red;" id="message2"> Select at least 1 filter category. </h6>
+
+                            </div>
                                 </form>
                             </div>
                             
@@ -145,7 +148,7 @@
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <form action='?command=sort' method='post'>
+                                    <form id="sortForm" action='?command=sort' method='post'>
 
                                         <h5> By Time </h5>
                                         <div class="form-check form-check-inline">
@@ -187,7 +190,8 @@
                                             <label class="form-check-label">Any</label>
                                         </div>
                                         <br> <br>                   
-                                        <button class='btn btn-primary' type='submit'>Sort</button>
+                                        <button id="sortButton" disabled="true" class='btn btn-primary' type='submit'>Sort</button>
+                                        <h6 style="color:red;" id="message3"> Select at least 1 sort category. </h6>
                                     </form>
                                 </div>
                             </div>
@@ -246,17 +250,41 @@
         </footer>
     </div>
     <script type="text/javascript">
-        function validation(){
-            pattern = /^[A-Za-z]+$/;
-            keyword = document.getElementById("namesearch").value;
-            if(!keyword.match(pattern)){
-                document.getElementById("message").innerHTML = "No number or symbols pls";
-                document.getElementById('searchbutton').disabled = true;
+
+        $("#namesearch").keyup(function() {
+            let pattern = /^[A-Za-z0-9]+$/;
+            let keyword = $("#namesearch").val();
+            if(keyword === "") {
+                $("#message").html("Search content cannot be empty");
+                $("#searchbutton").prop("disabled", true);
+            }
+            else if(!pattern.test(keyword)){
+                $("#message").html("No symbols in search pls");
+                $('#searchbutton').prop("disabled", true);
             }else{
-                document.getElementById("message").innerHTML = "";
-                document.getElementById('searchbutton').disabled = false;
+                $("#message").html("");
+                $('#searchbutton').prop("disabled", false);
+            }
+        });
+
+        $("#filterForm input").click(function() {
+            $("#filterButton").prop("disabled", false);
+            $("#message2").html("");
+        });
+
+        $("#sortForm input").click(function() {
+            $("#sortButton").prop("disabled", false);
+            $("#message3").html("");
+        });
+
+        function validation() {
+            let input = $("#namesearch").val();
+            if(input === "") {
+                $("#message").html("Enter something to search");
+                $('#searchbutton').prop("disabled", true);
             }
         }
+
     </script>
 </body>
 
