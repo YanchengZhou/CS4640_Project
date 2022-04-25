@@ -93,6 +93,8 @@
                                 <td><?=$userinfo[0]["note"];?></td>
                             </tr>
                         </table>
+                        <button type="button" class="btn btn-primary" id = "viewusers">Hover to preview all users!</button>
+                        <div id="userview"></div>
                 </div>
             </div>
 
@@ -154,7 +156,29 @@
             </ul>
         </footer>
     </div>
-    <script src="sprint4javascript.js"></script>
+    <script type="text/javascript">
+            $(document).ready(function() {
+                $('#viewusers').mouseenter(function() {
+                    $.ajax({
+                        type: "GET",
+                        url: 'classes/user.php',
+                        success: function(response){
+                            json1 = eval(response);
+                            itemlist = [];
+                            itemlist.push("All users: ");
+                            for (var i = 0; i < json1.length; i++){
+                                var obj = json1[i];
+                                itemlist.push(obj["name"]);
+                                itemlist.push(" ");
+                            }     
+                            $("#userview").html(itemlist);
+                        }
+                });
+                }).mouseleave(function(){
+                    $("#userview").html("");
+                });
+            });
+    </script>
 </body>
 
 </html>

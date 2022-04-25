@@ -11,7 +11,7 @@
          <link rel="stylesheet" type="text/css" href="styles/info_upload.css">
 
          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
-         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
          <title>UVA Connect</title> 
      </head>  
      <body>
@@ -72,23 +72,11 @@
                     
                     <img src="images/item.jpg" alt="item image" style="height:40%;width:60%;">
                     <div style="padding-bottom:5px; padding-top: 5px;">
-                        <button type="button" class="btn btn-primary" id = "upvote">Upvote</button>
-                        <button type="button" class="btn btn-primary" id = "addcollection">Add collection</button>
+                        <button type="button" class="btn btn-primary" id = "viewotheritems">Hover to preview all items!</button>
                     </div>
-
-                    <form action="/action.php" id="commentopen">
-                        <label for="comment0">Send comments:</label>
-                        <textarea id = "comment0" form = "commentopen" class = "usercomment" style=" min-width:10px; max-width:100%;min-height:10px;height:30%;width:70%;" >
-                        </textarea>
-                        <input class="btn btn-primary" type="submit" value="Submit">
-                    </form>
-
-                    <form action="/action.php" id="private">
-                        <label for="comment1">Send comments:</label>
-                        <textarea id = "comment1" form = "private" class = "usercomment" style=" min-width:10px; max-width:100%;min-height:10px;height:30%;width:70%;" >
-                        </textarea>
-                        <input class="btn btn-primary" type="submit" value="Submit">
-                    </form>
+                    
+                    <!-- use ajax to display name of other posted items/events -->
+                    <div id="itempreview"></div>
 
                 </div>
             </div>
@@ -109,9 +97,32 @@
             </footer>
         </div>
 
-        <script src="sprint4javascript.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#viewotheritems').mouseenter(function() {
+                    $.ajax({
+                        type: "GET",
+                        url: 'classes/uploadhistory.php',
+                        success: function(response){
+                            json1 = eval(response);
+                            itemlist = [];
+                            itemlist.push("All items: ");
+                            for (var i = 0; i < json1.length; i++){
+                                var obj = json1[i];
+                                itemlist.push(obj["itemname"]);
+                                itemlist.push(" ");
+                            }     
+                            $("#itempreview").html(itemlist);
+                        }
+                });
+                }).mouseleave(function(){
+                    $("#itempreview").html("");
+                });
+            });
+        </script>
+
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
      </body>
  </html>
