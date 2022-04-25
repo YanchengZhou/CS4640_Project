@@ -104,6 +104,7 @@
                         type: "GET",
                         url: 'classes/uploadhistory.php',
                         success: function(response){
+                            //json1 is our JavaScript object
                             json1 = eval(response);
                             itemlist = [];
                             itemlist.push("All items: ");
@@ -113,6 +114,9 @@
                                 itemlist.push(" ");
                             }     
                             $("#itempreview").html(itemlist);
+                        },
+                        error: function(xhr, status, error){
+                            alert(error);
                         }
                 });
                 }).mouseleave(function(){

@@ -163,6 +163,7 @@
                         type: "GET",
                         url: 'classes/user.php',
                         success: function(response){
+                            //json1 is our javascript object
                             json1 = eval(response);
                             itemlist = [];
                             itemlist.push("All users: ");
@@ -172,6 +173,9 @@
                                 itemlist.push(" ");
                             }     
                             $("#userview").html(itemlist);
+                        },
+                        error: function(xhr, status, error){
+                            alert(error);
                         }
                 });
                 }).mouseleave(function(){
