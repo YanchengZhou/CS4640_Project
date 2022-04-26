@@ -131,7 +131,7 @@
                     echo "<br>";
                     echo "<form action='?command=delete' method='post'>";
                     echo "<input type='hidden' name='id' value=$id>";
-                    echo "<button class='btn btn-danger btn-lg' type='submit'>Delete</button>". "</div>";
+                    echo "<button class='btn btn-danger btn-lg' type='submit' onclick='deleteItem(this)'>Delete</button>". "</div>";
                     echo "</form>";
                     echo "<div class='col-md-8'>" . "<img class='card-img-top' src='images/item.jpg' alt='No picture available'>";
                     echo "</div>" . "</div>" . "</div>" . "<br>";
@@ -173,6 +173,9 @@
                                 itemlist.push(" ");
                             }     
                             $("#userview").html(itemlist);
+                            $("#viewusers").html("------- List of users: -------");
+                            $("#viewusers").removeClass("btn btn-primary");
+                            $("#viewusers").addClass("btn btn-success");
                         },
                         error: function(xhr, status, error){
                             alert(error);
@@ -180,8 +183,17 @@
                 });
                 }).mouseleave(function(){
                     $("#userview").html("");
+                    $("#viewusers").html("Hover to preview all users!");
+                    $("#viewusers").removeClass("btn btn-success");
+                    $("#viewusers").addClass("btn btn-primary");
                 });
             });
+
+            //change view of screen by deleting the item
+            function deleteItem(o) {
+                var item = o.parentNode.parentNode.parentNode;
+                item.parentNode.removeChild(item);
+            }
     </script>
 </body>
 

@@ -98,6 +98,21 @@
         </div>
 
         <script type="text/javascript">
+            class Item {
+                constructor(category, id2, itemname, note, poster, price, status, time, upvote, userid) {
+                    this.category = category;
+                    this.id2 = id2;
+                    this.itemname = itemname;
+                    this.note = note;
+                    this.poster = poster;
+                    this.price = price;
+                    this.status = status;
+                    this.time = time;
+                    this.upvote = upvote;
+                    this.userid = userid;
+                }
+            }
+
             $(document).ready(function() {
                 $('#viewotheritems').mouseenter(function() {
                     $.ajax({
@@ -110,10 +125,15 @@
                             itemlist.push("All items: ");
                             for (var i = 0; i < json1.length; i++){
                                 var obj = json1[i];
-                                itemlist.push(obj["itemname"]);
+                                let item = new Item(obj.category, obj.id2, obj.itemname, obj.note,
+                                    obj.poster, obj.price, obj.status, obj.time, obj.upvote, obj.userid);
+                                itemlist.push(item["itemname"]);
                                 itemlist.push(" ");
                             }     
                             $("#itempreview").html(itemlist);
+                            $("#viewotheritems").html("List of items --------------");
+                            $("#viewotheritems").removeClass("btn btn-primary");
+                            $("#viewotheritems").addClass("btn btn-success");
                         },
                         error: function(xhr, status, error){
                             alert(error);
@@ -121,6 +141,9 @@
                 });
                 }).mouseleave(function(){
                     $("#itempreview").html("");
+                    $("#viewotheritems").html("Hover to preview all items!");
+                    $("#viewotheritems").removeClass("btn btn-success");
+                    $("#viewotheritems").addClass("btn btn-primary");
                 });
             });
         </script>
